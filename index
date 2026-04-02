@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Radio Peniel - Presencia de Dios</title>
+
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#000000">
+
+<style>
+
+/* GENERAL */
+body{
+margin:0;
+font-family:Arial;
+background:#000000;
+color:rgb(255, 255, 255);
+}
+
+/* NAVBAR */
+.navbar{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:10px 20px;
+background:#111;
+}
+
+.navbar ul{
+display:flex;
+list-style:none;
+gap:20px;
+}
+
+.navbar a{
+color:rgb(255, 255, 255);
+text-decoration:none;
+}
+
+/* HERO */
+.hero{
+position:relative;
+height:80vh;
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
+}
+
+.live{
+background:rgb(255, 0, 0);
+padding:5px 10px;
+border-radius:5px;
+}
+
+/* PLAYER */
+.player {
+background: #111;
+padding: 30px;
+border-radius: 20px;
+text-align: center;
+width: 320px;
+box-shadow: 0 0 30px rgba(0,0,0,0.8);
+}
+
+h1 {
+font-size: 18px;
+margin: 10px 0;
+}
+
+p {
+color: #aaa;
+font-size: 14px;
+}
+
+.play-btn {
+margin-top: 20px;
+background: #00ffcc;
+border: none;
+color: black;
+font-size: 18px;
+padding: 15px;
+border-radius: 50%;
+cursor: pointer;
+}
+
+.wave {
+display: flex;
+justify-content: center;
+margin-top: 20px;
+}
+
+.wave span {
+width: 5px;
+height: 20px;
+margin: 2px;
+background: #00ffcc;
+}
+
+/* VERSICULOS */
+header{
+background:#000;
+padding:30px;
+font-size:35px;
+font-weight:bold;
+box-shadow:0px 5px 20px black;
+text-align:center;
+}
+
+.versiculos{
+padding:60px 20px;
+text-align:center;
+}
+
+.titulo{
+font-size:40px;
+margin-bottom:40px;
+text-shadow:2px 2px 10px black;
+}
+
+.fb-container{
+display:flex;
+justify-content:center;
+}
+
+/* REDES */
+.social-container{
+text-align:center;
+padding:40px;
+background:#111;
+}
+
+.social a{
+color:white;
+font-size:30px;
+margin:0 15px;
+}
+
+/* FOOTER */
+footer{
+margin-top:50px;
+padding:20px;
+background:#000;
+font-size:14px;
+text-align:center;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="logo">
+    <img src="logo.jpg.png" height="40">
+    <span>Radio Peniel - PRESENCIA DE DIOS -</span>
+  </div>
+
+  <ul>
+    <li><a href="#radio">Radio</a></li>
+    <li><a href="versiculos.html">Versículos</a></li>
+    <li><a href="INFORMACION.HTML">Información</a></li>
+    <li><a href="#fotos">Fotos</a></li>
+  </ul>
+</nav>
+
+<!-- RADIO -->
+<section class="hero" id="radio">
+  <div class="player">
+
+    <span class="live">🔴 EN VIVO</span>
+
+    <h1>Radio Peniel</h1>
+    <p>Presencia de Dios 24/7</p>
+
+    <button class="play-btn" onclick="toggleAudio()">▶</button>
+
+    <div class="wave">
+      <span></span><span></span><span></span><span></span>
+    </div>
+
+    <audio id="radioPlayer">
+      <source src="https://stream.zeno.fm/ezts44pqqf8tv" type="audio/mpeg">
+    </audio>
+
+  </div>
+</section>
+
+<!-- VERSICULO -->
+<section class="versiculos">
+
+<h2 class="titulo">Versículo del Día</h2>
+
+<img id="versiculoDia" src="VERSICULOS/Salmo 105 1/1.png" width="350" onclick="cambiarImagen()" style="cursor:pointer;">
+
+</section>
+
+<!-- REDES -->
+<div class="social-container">
+<h2>Síganos en las redes</h2>
+
+<div class="social">
+
+<a href="https://www.facebook.com/profile.php?id=61576879132159" target="_blank">
+<i class="fab fa-facebook-f"></i>
+</a>
+
+<a href="https://www.instagram.com/radiopenielpresenciadedios/" target="_blank">
+<i class="fab fa-instagram"></i>
+</a>
+
+<a href="https://www.youtube.com/@RadioPenielPresenciadeDios" target="_blank">
+<i class="fab fa-youtube"></i>
+</a>
+
+<a href="https://whatsapp.com/channel/0029VbAwl3xGOj9gx5A5kV2Q" target="_blank">
+<i class="fab fa-whatsapp"></i>
+</a>
+
+</div>
+</div>
+
+<footer>
+© ARTES DE LA CRUZ FLOW MUSIC INC. <br>
+© Radio Peniel Presencia de Dios
+</footer>
+
+<script>
+const audio = document.getElementById("radioPlayer");
+const btn = document.querySelector(".play-btn");
+
+function toggleAudio() {
+  if (audio.paused) {
+    audio.play();
+    btn.innerHTML = "⏸";
+  } else {
+    audio.pause();
+    btn.innerHTML = "▶";
+  }
+}
+
+function cambiarImagen(){
+  var img = document.getElementById("versiculoDia");
+
+  if(img.src.includes("1.png")){
+    img.src = "VERSICULOS/Salmo 105 1/2.png";
+  } else {
+    img.src = "VERSICULOS/Salmo 105 1/1.png";
+  }
+}
+</script>
+
+</body>
+</html>
